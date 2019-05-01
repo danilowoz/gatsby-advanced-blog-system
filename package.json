@@ -4,19 +4,24 @@
   "version": "0.1.0",
   "author": "Danilo Woznica <danilowoz@gmail.com>",
   "dependencies": {
+    "@reach/router": "^1.2.1",
     "gatsby": "^2.2.5",
     "gatsby-image": "^2.0.34",
     "gatsby-plugin-manifest": "^2.0.24",
     "gatsby-plugin-offline": "^2.0.25",
     "gatsby-plugin-react-helmet": "^3.0.10",
     "gatsby-plugin-sharp": "^2.0.30",
-    "gatsby-source-filesystem": "^2.0.28",
+    "gatsby-source-filesystem": "^2.0.32",
     "gatsby-transformer-sharp": "^2.1.17",
+    "griding": "^0.2.2",
     "lodash.kebabcase": "^4.1.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "react-helmet": "^5.2.0"
+    "react-helmet": "^5.2.0",
+    "styled-components": "^4.2.0",
+    "typography": "^0.16.19",
+    "typography-theme-moraga": "^0.16.19"
   },
   "devDependencies": {
     "gatsby-remark-images": "^3.0.10",

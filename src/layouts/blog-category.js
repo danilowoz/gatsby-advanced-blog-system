@@ -1,70 +1,46 @@
 import React from "react"
 import kebabCase from "lodash.kebabcase"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
+import { Row, Cell } from "griding"
 
+import { Container } from "../components/grid"
+import * as S from "../components/styles.css"
+import Layout from "../components/layout"
 import Seo from "../components/seo"
+import Pagination from "../components/Pagination"
+import renderList from "../components/renderList"
 
 const BlogCategory = ({ data, pageContext }) => {
   const { allMarkdownRemark } = data
+  const { currentPage, numPages, category, allCategories } = pageContext
 
   return (
-    <>
-      <Seo title={pageContext.category} />
-      <h1>Categories:</h1>
-      {pageContext.allCategories.map(cat => (
-        <Link to={`/blog/category/${kebabCase(cat)}`}>{cat}</Link>
-      ))}
-      <br />
+    <Layout>
+      <Seo title={category} />
 
-      {allMarkdownRemark.edges.map(({ node }) => {
-        const imageSource = node.frontmatter.image.childImageSharp.fluid.src
-
-        return (
-          <React.Fragment key={node.fields.slug}>
-            <Link to={node.fields.slug}>
-              <img src={imageSource} alt={node.frontmatter.title} />
-              <h1>{node.frontmatter.title}</h1>
-            </Link>
-            <p>{node.frontmatter.date}</p>
-            <p>
-              By{" "}
-              <Link to={`/blog/author/${kebabCase(node.frontmatter.author)}`}>
-                {node.frontmatter.author}
-              </Link>
-            </p>
-            <p>
-              In:{" "}
-              {node.frontmatter.category.map(cat => (
-                <Link key={cat} to={`/blog/category/${kebabCase(cat)}`}>
+      <Container>
+        <Row>
+          <Cell xs={12}>
+            <S.HeaderSectionTitle>Categories:</S.HeaderSectionTitle>
+            <S.HeaderSectionList>
+              {allCategories.map(cat => (
+                <S.HeaderSectionLink to={`/blog/category/${kebabCase(cat)}`}>
                   {cat}
-                </Link>
+                </S.HeaderSectionLink>
               ))}
-            </p>
-          </React.Fragment>
-        )
-      })}
+            </S.HeaderSectionList>
+          </Cell>
 
-      <ul>
-        {Array.from({ length: pageContext.numPages }).map((item, i) => {
-          const index = i + 1
-          const category = kebabCase(pageContext.category)
-          const link =
-            index === 1
-              ? `/blog/category/${category}`
-              : `/blog/category/${category}/page/${index}`
+          {allMarkdownRemark.edges.map(renderList)}
+        </Row>
 
-          return (
-            <li>
-              {pageContext.currentPage === index ? (
-                <span>{index}</span>
-              ) : (
-                <a href={link}>{index}</a>
-              )}
-            </li>
-          )
-        })}
-      </ul>
-    </>
+        <Pagination
+          currentPage={currentPage}
+          numPages={numPages}
+          contextPage={`category/${kebabCase(category)}`}
+        />
+      </Container>
+    </Layout>
   )
 }
 

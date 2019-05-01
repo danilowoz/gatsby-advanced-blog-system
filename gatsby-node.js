@@ -24,6 +24,13 @@ exports.createPages = ({ graphql, actions }) => {
               author
               category
               featured
+              image {
+                childImageSharp {
+                  fluid {
+                    src
+                  }
+                }
+              }
             }
             html
           }

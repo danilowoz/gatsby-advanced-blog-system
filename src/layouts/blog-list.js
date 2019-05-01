@@ -1,63 +1,29 @@
 import React from "react"
-import kebabCase from "lodash.kebabcase"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
+import { Row, Cell } from "griding"
 
+import { Container } from "../components/grid"
+import Layout from "../components/layout"
 import Seo from "../components/seo"
-import Featured from "../components/featured"
+import Pagination from "../components/Pagination"
+import Featured from "../components/Featured"
+import renderList from "../components/renderList"
 
 const BlogPostList = ({ data, pageContext }) => {
   const { allMarkdownRemark } = data
   const { currentPage, numPages } = pageContext
 
   return (
-    <>
-      {currentPage === 1 && <Featured />}
+    <Layout>
       <Seo title="Blog" />
-      {allMarkdownRemark.edges.map(({ node }) => {
-        const imageSource = node.frontmatter.image.childImageSharp.fluid.src
+      <Cell xs={12}>{currentPage === 1 && <Featured />}</Cell>
 
-        return (
-          <React.Fragment key={node.fields.slug}>
-            <Link to={node.fields.slug}>
-              <img src={imageSource} alt={node.frontmatter.title} />
-              <h1>{node.frontmatter.title}</h1>
-            </Link>
-            <p>{node.frontmatter.date}</p>
-            <p>
-              By{" "}
-              <Link to={`/blog/author/${kebabCase(node.frontmatter.author)}`}>
-                {node.frontmatter.author}
-              </Link>
-            </p>
-            <p>
-              In:{" "}
-              {node.frontmatter.category.map(cat => (
-                <Link key={cat} to={`/blog/category/${kebabCase(cat)}`}>
-                  {cat}
-                </Link>
-              ))}
-            </p>
-          </React.Fragment>
-        )
-      })}
+      <Container>
+        <Row>{allMarkdownRemark.edges.map(renderList)}</Row>
 
-      <ul>
-        {Array.from({ length: numPages }).map((item, i) => {
-          const index = i + 1
-          const link = index === 1 ? "/blog" : `/blog/page/${index}`
-
-          return (
-            <li key={link}>
-              {currentPage === index ? (
-                <span>{index}</span>
-              ) : (
-                <a href={link}>{index}</a>
-              )}
-            </li>
-          )
-        })}
-      </ul>
-    </>
+        <Pagination currentPage={currentPage} numPages={numPages} />
+      </Container>
+    </Layout>
   )
 }
 
