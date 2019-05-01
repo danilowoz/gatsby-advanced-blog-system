@@ -5,12 +5,14 @@
   "author": "Danilo Woznica <danilowoz@gmail.com>",
   "dependencies": {
     "@reach/router": "^1.2.1",
+    "babel-plugin-styled-components": "^1.10.0",
     "gatsby": "^2.2.5",
     "gatsby-image": "^2.0.34",
     "gatsby-plugin-manifest": "^2.0.24",
     "gatsby-plugin-offline": "^2.0.25",
     "gatsby-plugin-react-helmet": "^3.0.10",
     "gatsby-plugin-sharp": "^2.0.30",
+    "gatsby-plugin-styled-components": "^3.0.7",
     "gatsby-source-filesystem": "^2.0.32",
     "gatsby-transformer-sharp": "^2.1.17",
     "griding": "^0.2.2",
@@ -34,6 +36,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
+    "now-build": "npm run build",
     "develop": "gatsby develop",
     "dev": "npm run develop",
     "format": "prettier --write src/**/*.{js,jsx}",

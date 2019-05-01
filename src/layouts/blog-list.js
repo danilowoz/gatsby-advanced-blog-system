@@ -5,8 +5,8 @@ import { Row, Cell } from "griding"
 import { Container } from "../components/grid"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import Pagination from "../components/Pagination"
-import Featured from "../components/Featured"
+import Pagination from "../components/pagination"
+import Featured from "../components/featured"
 import renderList from "../components/renderList"
 
 const BlogPostList = ({ data, pageContext }) => {

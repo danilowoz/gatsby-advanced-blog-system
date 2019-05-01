@@ -7,7 +7,7 @@ import { Container } from "../components/grid"
 import * as S from "../components/styles.css"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import Pagination from "../components/Pagination"
+import Pagination from "../components/pagination"
 import renderList from "../components/renderList"
 
 const BlogCategory = ({ data, pageContext }) => {
