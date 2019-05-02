@@ -36,7 +36,7 @@ const Layout = ({ children }) => (
 
           <S.Footer>
             See the original article:{" "}
-            <a href="link" target="_blank" rel="noopener noreferrer">
+            <a href="https://blog.significa.pt/advanced-blog-system-in-gatsby-16e0cd6b85ad" target="_blank" rel="noopener noreferrer">
               Advanced blog system in Gatsby
             </a>
             , by{" "}
