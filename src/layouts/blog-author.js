@@ -23,7 +23,7 @@ const BlogAuhor = ({ data, pageContext }) => {
           <Cell xs={12}>
             <S.HeaderSectionTitle>Authors:</S.HeaderSectionTitle>
             <S.HeaderSectionList>
-              {allAuthors.map(cat => (
+              {allAuthors.map((cat) => (
                 <S.HeaderSectionLink to={`/blog/author/${kebabCase(cat)}`}>
                   {cat}
                 </S.HeaderSectionLink>

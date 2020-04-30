@@ -4,7 +4,6 @@ import { Row, Cell } from "griding"
 
 import { Container } from "../components/grid"
 import Layout from "../components/layout"
-import Seo from "../components/seo"
 import Pagination from "../components/pagination"
 import Featured from "../components/featured"
 import renderList from "../components/renderList"
@@ -15,7 +14,6 @@ const BlogPostList = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <Seo title="Blog" />
       <Cell xs={12}>{currentPage === 1 && <Featured />}</Cell>
 
       <Container>
